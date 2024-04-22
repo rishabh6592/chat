@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <input id="msg" type="text" placeholder="enter msg">
+    <button>send msg</button>
+
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io();
+        document.querySelector("button").addEventListener("click",(event)=>{
+          const inputField = document.querySelector("#msg").value
+          console.log(inputField)
+          socket.emit("sony",inputField)
+        })
+        socket.on("sony",msg => {
+          console.log(msg)
+        })
+
+
+
+
+    </script>
+  </body>
+</html>
